@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.5, 0.2, 0.5 )
+
+[node name="Jump Pad" type="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2.94043, 0 )
+width = 1.0
+height = 0.2
+depth = 1.0
+
+[node name="jump" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="jump"]
+shape = SubResource( 1 )
+
+[node name="animated" type="CSGBox" parent="."]
+transform = Transform( 0.998946, 0.0454745, -0.00615363, -0.0451895, 0.998159, 0.0404479, 0.00798164, -0.0401272, 0.999163, 0, 0.220463, 0 )
+width = 1.0
+height = 0.029
+depth = 1.0

@@ -1,0 +1,165 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_vertex_lighting = true
+params_line_width = 5.4
+params_point_size = 7.1
+albedo_color = Color( 1, 0.992157, 0, 1 )
+metallic = 0.17
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color( 0.0509804, 0.0509804, 0.0392157, 1 )
+emission_energy = 2.82
+emission_operator = 0
+emission_on_uv2 = false
+transmission_enabled = true
+transmission = Color( 0.643137, 0.643137, 0.643137, 1 )
+
+[sub_resource type="CapsuleShape" id=7]
+radius = 0.236
+height = 1.17139
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 5, 0.556, 5 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.4, 0.763961, 0.448609 )
+
+[node name="Enemy" type="KinematicBody" groups=["Enemy"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.69407, 3 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0 )
+skeleton = NodePath("../Skeleton")
+
+[node name="Skeleton" type="Skeleton" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.299057, 0 )
+
+[node name="Head" type="CSGBox" parent="Skeleton"]
+transform = Transform( 1, 0, 0, 0, 0.980133, 0.198342, 0, -0.198342, 0.980133, 0, 0, 0 )
+width = 0.25
+height = 0.25
+depth = 0.25
+material = SubResource( 13 )
+
+[node name="BoneAttachment" type="BoneAttachment" parent="Skeleton"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0851517, 0 )
+
+[node name="neck" type="CSGBox" parent="Skeleton/BoneAttachment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0807588, 0 )
+width = 0.125
+height = 0.162271
+depth = 0.125
+material = SubResource( 13 )
+
+[node name="BoneAttachment" type="BoneAttachment" parent="Skeleton/BoneAttachment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.143611, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment"]
+transform = Transform( 1.45688, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.248165, 0 )
+width = 0.2
+height = 0.544148
+depth = 0.2
+material = SubResource( 13 )
+
+[node name="hand_l" type="BoneAttachment" parent="Skeleton/BoneAttachment/BoneAttachment"]
+transform = Transform( 0.616431, -0.787409, 0, 0.787409, 0.616431, 0, 0, 0, 1, -0.127037, -0.0644083, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment/hand_l"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124666, 0, 0 )
+width = 0.314
+height = 0.1
+depth = 0.1
+material = SubResource( 13 )
+
+[node name="BoneAttachment" type="BoneAttachment" parent="Skeleton/BoneAttachment/BoneAttachment/hand_l"]
+transform = Transform( 0.840037, -0.54253, 0, 0.54253, 0.840037, 0, 0, 0, 1, -0.250912, 2.86102e-06, 4.76837e-07 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment/hand_l/BoneAttachment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127823, 0, 0 )
+width = 0.303
+height = 0.1
+depth = 0.1
+material = SubResource( 13 )
+
+[node name="hand_r" type="BoneAttachment" parent="Skeleton/BoneAttachment/BoneAttachment"]
+transform = Transform( -0.70188, 0.712296, -8.74228e-08, 0.712296, 0.70188, -6.22709e-08, 1.7005e-08, -1.05978e-07, -1, 0.105836, -0.0644073, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment/hand_r"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124666, 0, 0 )
+width = 0.314
+height = 0.1
+depth = 0.1
+material = SubResource( 13 )
+
+[node name="BoneAttachment" type="BoneAttachment" parent="Skeleton/BoneAttachment/BoneAttachment/hand_r"]
+transform = Transform( 0.701171, -0.712994, 1.04881e-07, 0.712994, 0.701171, -1.06928e-07, 2.69957e-09, 1.49755e-07, 1, -0.250911, -2.26498e-06, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment/hand_r/BoneAttachment"]
+transform = Transform( 1, 7.45059e-09, 0, -7.45057e-09, 1, -7.10543e-15, -7.10543e-15, -7.10543e-15, 1, -0.127823, 0, 0 )
+width = 0.303
+height = 0.1
+depth = 0.1
+material = SubResource( 13 )
+
+[node name="leg_l" type="BoneAttachment" parent="Skeleton/BoneAttachment/BoneAttachment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0650117, -0.48343, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment/leg_l"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.172332, 0 )
+width = 0.1
+height = 0.370951
+depth = 0.1
+material = SubResource( 13 )
+
+[node name="BoneAttachment" type="BoneAttachment" parent="Skeleton/BoneAttachment/BoneAttachment/leg_l"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.324217, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment/leg_l/BoneAttachment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.160648, 0 )
+width = 0.1
+height = 0.371
+depth = 0.1
+material = SubResource( 13 )
+
+[node name="leg_r" type="BoneAttachment" parent="Skeleton/BoneAttachment/BoneAttachment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0693486, -0.48343, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment/leg_r"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.172332, 0 )
+width = 0.1
+height = 0.370951
+depth = 0.1
+material = SubResource( 13 )
+
+[node name="BoneAttachment" type="BoneAttachment" parent="Skeleton/BoneAttachment/BoneAttachment/leg_r"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.324217, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="Skeleton/BoneAttachment/BoneAttachment/leg_r/BoneAttachment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.160648, 0 )
+width = 0.1
+height = 0.371
+depth = 0.1
+material = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.319903, 0 )
+shape = SubResource( 7 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 11 )
+
+[node name="Attack" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Attack"]
+shape = SubResource( 12 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Attack" to="." method="_on_Attack_body_entered"]

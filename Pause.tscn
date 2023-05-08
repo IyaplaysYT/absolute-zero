@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="Pause" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -897.0
+margin_top = -875.0
+margin_right = 2003.0
+margin_bottom = 1344.0
+color = Color( 0.2, 0.372549, 0.458824, 0.4 )
